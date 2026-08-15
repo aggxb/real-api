@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: real-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/real_db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  web:
+    error:
+      include-message: always
+
+logging:
+  level:
+    br.com.aggxb: debug

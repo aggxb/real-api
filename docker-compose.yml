@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: real_db_container
+    environment:
+      POSTGRES_DB: "real_db"
+      POSTGRES_USER: "realDB_user"
+      POSTGRES_PASSWORD: "realDB_p4ss"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
