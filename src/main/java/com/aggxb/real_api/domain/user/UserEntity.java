@@ -2,6 +2,7 @@ package com.aggxb.real_api.domain.user;
 
 import com.aggxb.real_api.domain.like.LikeEntity;
 import com.aggxb.real_api.domain.post.PostEntity;
+import com.aggxb.real_api.domain.roles.RoleEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -50,5 +51,13 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<LikeEntity> likes = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<RoleEntity> roles = new HashSet<>();
 }
 
